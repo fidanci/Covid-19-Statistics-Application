@@ -30,30 +30,32 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.teal,
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                "COVİD-19 STATICS",
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.teal,
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  "COVİD-19 STATICS",
+                  style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-            ),
-            Center(
-              child: SpinKitPulse(
-                color: Colors.white70,
-                size: 100,
+              Center(
+                child: SpinKitPulse(
+                  color: Colors.white70,
+                  size: 100,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
