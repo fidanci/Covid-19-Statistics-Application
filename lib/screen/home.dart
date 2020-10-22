@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
           context: context,
           builder: (context) => Container(
             color: Colors.teal,
-            height: 600,
+            height: 550,
             width: width,
             child: Column(
               children: <Widget>[
