@@ -1,9 +1,13 @@
+import 'package:covidstatisticsapplication/helper/AppStrings.dart';
 import 'package:covidstatisticsapplication/screen/home.dart';
 import 'package:covidstatisticsapplication/screen/loading.dart';
 import 'package:covidstatisticsapplication/screen/selectCountry.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -11,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Covid-19 Information App',
+      title: AppString.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,

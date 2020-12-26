@@ -1,4 +1,7 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:covidstatisticsapplication/components/app_bar.dart';
+import 'package:covidstatisticsapplication/helper/AppColors.dart';
+import 'package:covidstatisticsapplication/helper/AppStrings.dart';
 import 'package:flutter/material.dart';
 import 'package:covidstatisticsapplication/Model/countryModel.dart';
 import 'package:covidstatisticsapplication/components/big_detail_bloc.dart';
@@ -46,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     if (cN != null) {
       c = cLst.where((i) => i.countryName == cN).elementAt(0);
     } else {
-      c = cLst.where((i) => i.countryName == "Turkey").elementAt(0);
+      c = cLst.where((i) => i.countryName == AppString.defaultCountry).elementAt(0);
     }
 
     double height = MediaQuery.of(context).size.height;
@@ -54,32 +57,38 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: appBar,
-        body: body(height, width),
+        backgroundColor: AppColors.colorDarkThemePrimary,
+        appBar: CustomAppBar(),
+        body: body(height, width, context),
       ),
     );
   }
 
   Widget get appBar => AppBar(
-        title: Text("Covid-19 Statics"),
+        title: Text(AppString.appName),
         centerTitle: true,
         elevation: 0,
       );
 
-  Widget body(double height, width) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 25),
-      height: height,
-      width: width,
-      child: Column(
-        children: [
-          SizedBox(height: 25),
-          clickablebigdetailbloc(height, width, context),
-          confirmedDetailBloc(height, width),
-          deathsDetailBloc(height, width),
-          recoveredDetailBloc(height, width),
-          dateBloc(height, width),
-        ],
+  Widget body(double height, width, BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 25),
+        height: height,
+        width: width,
+        child: Column(
+
+          children: [
+            SizedBox(height: size.height * 0.08),
+            clickablebigdetailbloc(height, width, context),
+            confirmedDetailBloc(height, width),
+            deathsDetailBloc(height, width),
+            recoveredDetailBloc(height, width),
+            dateBloc(height, width),
+          ],
+        ),
       ),
     );
   }
@@ -133,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(color: Colors.black87, fontSize: 16),
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(20, 30, 10, 20),
-                            hintText: "Search Country Name",
+                            hintText: AppString.searchCountry,
                             hintStyle: TextStyle(color: Colors.black87),
                           ),
                           itemFilter: (item, query) {
@@ -158,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                           child: FlatButton.icon(
                             icon: Icon(Icons.flag),
                             color: Colors.white60,
-                            label: Text("Change Country"),
+                            label: Text(AppString.changeCountry),
                             onPressed: () {
                               String ip = autoCompleteTextField
                                   .textField.controller.text;
@@ -166,8 +175,8 @@ class _HomePageState extends State<HomePage> {
                                 showDialog(
                                   context: context,
                                   builder: (_) => new AlertDialog(
-                                    title: new Text("Error!"),
-                                    content: Text("Please input country name"),
+                                    title: new Text(AppString.error),
+                                    content: Text(AppString.inputCountryName),
                                   ),
                                 );
                               } else {
@@ -187,9 +196,9 @@ class _HomePageState extends State<HomePage> {
                                   showDialog(
                                     context: context,
                                     builder: (_) => new AlertDialog(
-                                      title: new Text("Not Found"),
+                                      title: new Text(AppString.notFound),
                                       content: new Text(
-                                          "Country input is not a valid name"),
+                                          AppString.countryNameIsValid),
                                     ),
                                   );
                                 }
@@ -218,14 +227,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DetailBloc(
-            titleText: "Total Confirmed:",
+            titleText: AppString.totalConfirmed,
             detailText: c.totalConfirmed.toString(),
             height: height / 8,
             width: width / (2.5),
           ),
           SizedBox(width: 25),
           DetailBloc(
-            titleText: "New Confirmed:",
+            titleText: AppString.newConfirmed,
             detailText: c.newConfirmed.toString(),
             height: height / 8,
             width: width / (2.5),
@@ -244,14 +253,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DetailBloc(
-            titleText: "Total Deaths:",
+            titleText: AppString.totalDeaths,
             detailText: c.totalDeaths.toString(),
             height: height / 8,
             width: width / (2.5),
           ),
           SizedBox(width: 25),
           DetailBloc(
-            titleText: "New Deaths:",
+            titleText: AppString.newDeaths,
             detailText: c.newDeaths.toString(),
             height: height / 8,
             width: width / (2.5),
@@ -270,14 +279,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DetailBloc(
-            titleText: "Total Recovered:",
+            titleText: AppString.totalRecovered,
             detailText: c.totalRecovered.toString(),
             height: height / 8,
             width: width / (2.5),
           ),
           SizedBox(width: 25),
           DetailBloc(
-            titleText: "New Recovered:",
+            titleText: AppString.newRecovered,
             detailText: c.newRecovered.toString(),
             height: height / 8,
             width: width / (2.5),
@@ -289,7 +298,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget dateBloc(double height, width) {
     return BigDetailBloc(
-      titleText: "Date:",
+      titleText: AppString.date,
       detailText: c.date.toString().substring(0, 10),
       height: height / 10,
       width: width / (1.2),

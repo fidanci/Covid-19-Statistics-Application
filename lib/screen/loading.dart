@@ -1,4 +1,5 @@
 import 'package:covidstatisticsapplication/Model/countryModel.dart';
+import 'package:covidstatisticsapplication/helper/AppStrings.dart';
 import 'package:covidstatisticsapplication/service/covid-service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -40,7 +41,7 @@ class _LoadingPageState extends State<LoadingPage> {
             children: [
               Center(
                 child: Text(
-                  "COVİD-19 STATICS",
+                  AppString.appName,
                   style: TextStyle(
                     fontSize: 35,
                     color: Colors.white,
