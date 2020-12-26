@@ -1,0 +1,16 @@
+{
+    "appName": "COVID-19 İSTATİSTİKLERİ",
+    "searchCountry": "Ülke Adı Ara",
+    "changeCountry": "Ülke değiştir",
+    "error": "Hata",
+    "inputCountryName": "Lütfen ülke adını girin",
+    "notFound": "Bulunamadı",
+    "countryNameIsValid": "Bu isimde bir ülke bulunmamaktadır",
+    "totalConfirmed": "Toplam Vaka Sayısı",
+    "newConfirmed": "Yeni Vaka Sayısı",
+    "totalDeaths": "Toplam Ölüm Sayısı",
+    "newDeaths": "Vefat Sayısı",
+    "totalRecovered": "Toplam İyileşen Sayısı",
+    "newRecovered": "Yeni İyileşen Sayısı",
+    "date": "Tarih"
+}

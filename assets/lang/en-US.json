@@ -1,0 +1,16 @@
+{
+  "appName": "COVID-19 STATICS",
+  "searchCountry": "Search Country Name",
+  "changeCountry": "Change Country",
+  "error": "Error",
+  "inputCountryName": "Please input country name",
+  "notFound": "Not Found",
+  "countryNameIsValid": "Country input is not a valid name",
+  "totalConfirmed": "Total Confirmed",
+  "newConfirmed": "New Confirmed",
+  "totalDeaths": "Total Deaths",
+  "newDeaths": "New Deaths",
+  "totalRecovered": "Total Recovered",
+  "newRecovered": "New Recovered",
+  "date": "Tarih"
+}

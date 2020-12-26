@@ -1,6 +1,5 @@
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:covidstatisticsapplication/components/app_bar.dart';
-import 'package:covidstatisticsapplication/helper/AppColors.dart';
 import 'package:covidstatisticsapplication/helper/AppStrings.dart';
 import 'package:flutter/material.dart';
 import 'package:covidstatisticsapplication/Model/countryModel.dart';
@@ -49,7 +48,9 @@ class _HomePageState extends State<HomePage> {
     if (cN != null) {
       c = cLst.where((i) => i.countryName == cN).elementAt(0);
     } else {
-      c = cLst.where((i) => i.countryName == AppString.defaultCountry).elementAt(0);
+      c = cLst
+          .where((i) => i.countryName == AppString.defaultCountry)
+          .elementAt(0);
     }
 
     double height = MediaQuery.of(context).size.height;
@@ -57,18 +58,11 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.colorDarkThemePrimary,
         appBar: CustomAppBar(),
         body: body(height, width, context),
       ),
     );
   }
-
-  Widget get appBar => AppBar(
-        title: Text(AppString.appName),
-        centerTitle: true,
-        elevation: 0,
-      );
 
   Widget body(double height, width, BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -79,7 +73,6 @@ class _HomePageState extends State<HomePage> {
         height: height,
         width: width,
         child: Column(
-
           children: [
             SizedBox(height: size.height * 0.08),
             clickablebigdetailbloc(height, width, context),

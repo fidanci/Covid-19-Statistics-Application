@@ -3,11 +3,8 @@ import 'package:covidstatisticsapplication/screen/home.dart';
 import 'package:covidstatisticsapplication/screen/loading.dart';
 import 'package:covidstatisticsapplication/screen/selectCountry.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -19,6 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
+        accentColor: Colors.teal,
+        appBarTheme: AppBarTheme(color: Colors.teal),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/loading',

@@ -43,7 +43,7 @@ class _LoadingPageState extends State<LoadingPage> {
                 child: Text(
                   AppString.appName,
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 30,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),

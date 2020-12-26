@@ -66,6 +66,7 @@ class _ClickableBigDetailBlocState extends State<ClickableBigDetailBloc> {
                 ),
                 label: Text(
                   titleText,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: titleFontSize,
                     letterSpacing: 1,

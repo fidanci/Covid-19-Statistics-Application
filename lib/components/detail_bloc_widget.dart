@@ -65,6 +65,7 @@ class _DetailBlocState extends State<DetailBloc> {
             Center(
               child: Text(
                 titleText,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: titleFontSize,
                   color: titleTextColor,
@@ -75,6 +76,7 @@ class _DetailBlocState extends State<DetailBloc> {
             Center(
               child: Text(
                 detailText,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: detailFontSize,
                   color: detailTextColor,

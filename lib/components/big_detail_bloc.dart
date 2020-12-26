@@ -61,12 +61,13 @@ class _BigDetailBlocState extends State<BigDetailBloc> {
           Center(
             child: AnimatedContainer(
               duration: Duration(milliseconds: 25),
-              padding: EdgeInsets.only(left: 100),
+              padding: EdgeInsets.only(left: 90),
               child: Column(
                 children: [
                   Center(
                     child: Text(
                       titleText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: titleFontSize,
                         color: titleTextColor,
@@ -77,6 +78,7 @@ class _BigDetailBlocState extends State<BigDetailBloc> {
                   Center(
                     child: Text(
                       detailText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: detailFontSize,
                         letterSpacing: 1,

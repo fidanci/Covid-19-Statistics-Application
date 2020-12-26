@@ -1,13 +1,6 @@
-import 'package:covidstatisticsapplication/helper/AppColors.dart';
+/*import 'package:covidstatisticsapplication/helper/AppColors.dart';
 import 'package:flutter/material.dart'
-    show
-        Brightness,
-        FloatingActionButtonThemeData,
-        FontWeight,
-        IconThemeData,
-        TextTheme,
-        ThemeData,
-        VisualDensity;
+    show Brightness, ThemeData, VisualDensity;
 
 final themeDarkData = ThemeData(
   visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -16,3 +9,4 @@ final themeDarkData = ThemeData(
   accentColor: AppColors.colorDarkThemeAccent,
   scaffoldBackgroundColor: AppColors.colorDarkThemePrimary,
 );
+*/
