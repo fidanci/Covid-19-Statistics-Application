@@ -74,12 +74,14 @@ class _HomePageState extends State<HomePage> {
         width: width,
         child: Column(
           children: [
-            SizedBox(height: size.height * 0.08),
+            SizedBox(height: size.height * 0.01),
+            dateBloc(height, width),
+            SizedBox(height: size.height * 0.04),
             clickablebigdetailbloc(height, width, context),
             confirmedDetailBloc(height, width),
             deathsDetailBloc(height, width),
             recoveredDetailBloc(height, width),
-            dateBloc(height, width),
+
           ],
         ),
       ),
@@ -94,121 +96,125 @@ class _HomePageState extends State<HomePage> {
       onPressed: () {
         /*Navigator.pushReplacementNamed(context, '/selectCountry',
             arguments: {'cLst': cLst});*/
-        showModalBottomSheet(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-          ),
-          isScrollControlled: true,
-          backgroundColor: Colors.teal,
-          context: context,
-          builder: (context) => Container(
-            color: Colors.teal,
-            height: 550,
-            width: width,
-            child: Column(
-              children: <Widget>[
-                Divider(
-                  indent: 165,
-                  endIndent: 165,
-                  thickness: 2,
-                  color: Colors.white,
-                ),
-                SizedBox(height: 20),
-                Container(
-                  height: height / (3),
-                  width: width / (1.2),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
-                    ),
-                  ),
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        autoCompleteTextField = AutoCompleteTextField<Country>(
-                          key: key,
-                          clearOnSubmit: false,
-                          suggestions: cLst,
-                          style: TextStyle(color: Colors.black87, fontSize: 16),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(20, 30, 10, 20),
-                            hintText: AppString.searchCountry,
-                            hintStyle: TextStyle(color: Colors.black87),
-                          ),
-                          itemFilter: (item, query) {
-                            return item.countryName
-                                .toLowerCase()
-                                .startsWith(query.toLowerCase());
-                          },
-                          itemSorter: (a, b) {
-                            return a.countryName.compareTo(b.countryName);
-                          },
-                          itemSubmitted: (item) {
-                            setState(() {
-                              autoCompleteTextField.textField.controller.text =
-                                  item.countryName;
-                            });
-                          },
-                          itemBuilder: (context, item) {
-                            return row(item);
-                          },
-                        ),
-                        Center(
-                          child: FlatButton.icon(
-                            icon: Icon(Icons.flag),
-                            color: Colors.white60,
-                            label: Text(AppString.changeCountry),
-                            onPressed: () {
-                              String ip = autoCompleteTextField
-                                  .textField.controller.text;
-                              if (ip == null || ip.length == 0) {
-                                showDialog(
-                                  context: context,
-                                  builder: (_) => new AlertDialog(
-                                    title: new Text(AppString.error),
-                                    content: Text(AppString.inputCountryName),
-                                  ),
-                                );
-                              } else {
-                                print(ip);
-                                print(cLst.where((i) => i.countryName == ip));
-                                if (cLst
-                                        .where((i) => i.countryName == ip)
-                                        .length >
-                                    0) {
-                                  Navigator.pushReplacementNamed(
-                                      context, '/home', arguments: {
-                                    'cN': autoCompleteTextField
-                                        .textField.controller.text,
-                                    'cLst': cLst
-                                  });
-                                } else {
-                                  showDialog(
-                                    context: context,
-                                    builder: (_) => new AlertDialog(
-                                      title: new Text(AppString.notFound),
-                                      content: new Text(
-                                          AppString.countryNameIsValid),
-                                    ),
-                                  );
-                                }
-                              }
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
+       return showModalBottom(context, width, height);
       },
     );
+  }
+
+  Future showModalBottom(BuildContext context, width, double height) {
+     return showModalBottomSheet(
+       shape: RoundedRectangleBorder(
+         borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+       ),
+       isScrollControlled: true,
+       backgroundColor: Colors.teal,
+       context: context,
+       builder: (context) => Container(
+         color: Colors.teal,
+         height: 550,
+         width: width,
+         child: Column(
+           children: <Widget>[
+             Divider(
+               indent: 165,
+               endIndent: 165,
+               thickness: 2,
+               color: Colors.white,
+             ),
+             SizedBox(height: 20),
+             Container(
+               height: height / (3),
+               width: width / (1.2),
+               decoration: BoxDecoration(
+                 color: Colors.white,
+                 borderRadius: BorderRadius.all(
+                   Radius.circular(15),
+                 ),
+               ),
+               child: Center(
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.start,
+                   children: <Widget>[
+                     autoCompleteTextField = AutoCompleteTextField<Country>(
+                       key: key,
+                       clearOnSubmit: false,
+                       suggestions: cLst,
+                       style: TextStyle(color: Colors.black87, fontSize: 16),
+                       decoration: InputDecoration(
+                         contentPadding: EdgeInsets.fromLTRB(20, 30, 10, 20),
+                         hintText: AppString.searchCountry,
+                         hintStyle: TextStyle(color: Colors.black87),
+                       ),
+                       itemFilter: (item, query) {
+                         return item.countryName
+                             .toLowerCase()
+                             .startsWith(query.toLowerCase());
+                       },
+                       itemSorter: (a, b) {
+                         return a.countryName.compareTo(b.countryName);
+                       },
+                       itemSubmitted: (item) {
+                         setState(() {
+                           autoCompleteTextField.textField.controller.text =
+                               item.countryName;
+                         });
+                       },
+                       itemBuilder: (context, item) {
+                         return row(item);
+                       },
+                     ),
+                     Center(
+                       child: FlatButton.icon(
+                         icon: Icon(Icons.flag),
+                         color: Colors.white60,
+                         label: Text(AppString.changeCountry),
+                         onPressed: () {
+                           String ip = autoCompleteTextField
+                               .textField.controller.text;
+                           if (ip == null || ip.length == 0) {
+                             showDialog(
+                               context: context,
+                               builder: (_) => new AlertDialog(
+                                 title: new Text(AppString.error),
+                                 content: Text(AppString.inputCountryName),
+                               ),
+                             );
+                           } else {
+                             print(ip);
+                             print(cLst.where((i) => i.countryName == ip));
+                             if (cLst
+                                     .where((i) => i.countryName == ip)
+                                     .length >
+                                 0) {
+                               Navigator.pushReplacementNamed(
+                                   context, '/home', arguments: {
+                                 'cN': autoCompleteTextField
+                                     .textField.controller.text,
+                                 'cLst': cLst
+                               });
+                             } else {
+                               showDialog(
+                                 context: context,
+                                 builder: (_) => new AlertDialog(
+                                   title: new Text(AppString.notFound),
+                                   content: new Text(
+                                       AppString.countryNameIsValid),
+                                 ),
+                               );
+                             }
+                           }
+                         },
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+             ),
+           ],
+         ),
+       ),
+     );
   }
 
   Widget confirmedDetailBloc(double height, width) {
@@ -293,10 +299,11 @@ class _HomePageState extends State<HomePage> {
     return BigDetailBloc(
       titleText: AppString.date,
       detailText: c.date.toString().substring(0, 10),
-      height: height / 10,
+      height: height *0.1,
       width: width / (1.2),
     );
   }
+
 
   // ignore: missing_return
   Widget modalBottomSheet(BuildContext context) {

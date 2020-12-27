@@ -1,5 +1,3 @@
-import 'package:covidstatisticsapplication/helper/AppColors.dart'
-    show AppColors;
 import 'package:covidstatisticsapplication/helper/AppStrings.dart'
     show AppString;
 import 'package:flutter/material.dart';
@@ -36,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   BoxDecoration _boxDecoration(BuildContext context) => BoxDecoration(
-        color: AppColors.colorLightPrimary,
+        color: Colors.teal,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
         boxShadow: [
           BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
@@ -44,6 +42,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       );
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(70.0);
 }
